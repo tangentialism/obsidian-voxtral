@@ -8,7 +8,7 @@ Branched from `decouple-upstream` (PR #1).
 
 ## Next action
 
-David reviews the design. Once he approves it, write the implementation plan
+David reviews the design. Once it is approved, write the implementation plan
 (superpowers:writing-plans), then stop and hand off. Execution happens in a
 fresh session.
 
@@ -33,5 +33,5 @@ fresh session.
 ## Resume
 
 On branch `source-rebuild`, read the design doc. If David has approved it,
-run superpowers:writing-plans to produce the plan. Otherwise, apply his
+run superpowers:writing-plans to produce the plan. Otherwise, apply David's
 comments to the doc first.
