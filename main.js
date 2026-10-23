@@ -3756,12 +3756,10 @@ var VoxtralSettingTab = class extends import_obsidian.PluginSettingTab {
     runtime.renderFn(runtime.bodyEl);
   }
   renderConnection(containerEl) {
-    if (!import_obsidian.Platform.isMobile) {
-      this.renderLocalServerToggle(containerEl);
-      if (isLocalMode(this.plugin.settings)) {
-        this.renderLocalServerStatus(containerEl);
-        this.renderLocalCorrectionSettings(containerEl);
-      }
+    this.renderLocalServerToggle(containerEl);
+    if (isLocalMode(this.plugin.settings)) {
+      this.renderLocalServerStatus(containerEl);
+      this.renderLocalCorrectionSettings(containerEl);
     }
     new import_obsidian.Setting(containerEl).setName("Mistral API key").setDesc("Your API key from platform.mistral.ai. Stored in Obsidian\u2019s secret storage on this device (kept by your operating system), not in your vault, so it does not sync between devices; enter it once per device. Rotate the key if it was previously synced.").addComponent(
       (el) => new import_obsidian.SecretComponent(this.app, el).setValue(this.plugin.settings.apiKeySecretId).onChange(async (id) => {
@@ -3854,7 +3852,7 @@ var VoxtralSettingTab = class extends import_obsidian.PluginSettingTab {
    */
   renderLocalServerToggle(containerEl) {
     new import_obsidian.Setting(containerEl).setName("Local server mode (experimental)").setDesc(
-      "Connect to a local vLLM server at the API base URL below instead of Mistral's cloud. Realtime dictation only, no API key needed. Requires a GPU-class machine running vLLM \u2014 see the local server guide. Experimental."
+      "Connect to your own server (e.g. vLLM, on this machine or another one you can reach, such as over Tailscale) at the API base URL below instead of Mistral's cloud. Realtime dictation only, no API key needed. The server needs a GPU-class machine \u2014 see the local server guide. On mobile, use an https:// address. Experimental."
     ).addToggle(
       (toggle) => toggle.setValue(isLocalMode(this.plugin.settings)).onChange(async (value) => {
         this.plugin.settings.realtimeProtocol = value ? "vllm" : "mistral";
