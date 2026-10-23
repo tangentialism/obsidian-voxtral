@@ -18,4 +18,6 @@ from upstream or forwards issues there.
   points at `maxonamission/obsidian-voxtral/releases/tag/<v>`, and the
   "Buy me a coffee" setting opens the original author's page. Both should
   be fixed in the source rebuild.
-- Next: rebuild a TypeScript source tree for `main.js`.
+- Next: rebuild a TypeScript source tree from `main.js`. The upstream source repo
+  `maxonamission/voxtral-transcribe` returns 404 (private or gone), but the
+  bundle is unminified and keeps its esbuild module markers.

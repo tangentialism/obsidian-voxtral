@@ -9,9 +9,11 @@ issues or PRs there.
 
 The pre-built plugin artifacts: `main.js`, `manifest.json`, `styles.css`
 and `versions.json`. Upstream builds `main.js` from
-[maxonamission/voxtral-transcribe](https://github.com/maxonamission/voxtral-transcribe),
-which isn't vendored here. Until a source tree exists, changes are made
-directly to `main.js`.
+`maxonamission/voxtral-transcribe`, which is not publicly accessible (it
+returned 404 when checked on 2026-10-23). `main.js` is an unminified
+esbuild bundle that keeps its `// src/...` and `// ../shared/src/...`
+module markers, so the source tree can be rebuilt from it. Until then,
+changes are made directly to `main.js`.
 
 ## Releasing
 
