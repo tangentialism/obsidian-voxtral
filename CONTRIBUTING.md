@@ -1,56 +1,32 @@
 # Contributing
 
-> This file is synced to the distribution repository `obsidian-voxtral`; the
-> paragraph below describes that repository. Its source lives in
-> `voxtral-transcribe/obsidian-plugin/`.
+This repository is an independent fork of
+[maxonamission/obsidian-voxtral](https://github.com/maxonamission/obsidian-voxtral),
+taken at v1.19.0. It does not sync from upstream, and it does not send
+issues or PRs there.
 
-This repository is **distribution-only**. It contains the pre-built
-plugin artifacts (`main.js`, `manifest.json`, `styles.css`,
-`versions.json`) that Obsidian consumes when installing the plugin
-through the Community Plugins browser.
+## What's here
 
-The source code, build tooling, and tests live in the main repository:
+The pre-built plugin artifacts: `main.js`, `manifest.json`, `styles.css`
+and `versions.json`. Upstream builds `main.js` from
+[maxonamission/voxtral-transcribe](https://github.com/maxonamission/voxtral-transcribe),
+which isn't vendored here. Until a source tree exists, changes are made
+directly to `main.js`.
 
-➡️ **https://github.com/maxonamission/voxtral-transcribe**
+## Releasing
 
-## Where to file things
+Push a tag named after the bare version (e.g. `1.19.1`). The
+`release.yml` workflow attaches the three artifacts and pulls that
+version's section of `CHANGELOG.md` into the release notes. A tag with a
+`-suffix` (e.g. `1.20.0-beta.1`) is marked as a prerelease for BRAT.
+Bump `manifest.json` and `versions.json` together.
 
-- **Bug reports & feature requests:** open an issue at
-  https://github.com/maxonamission/voxtral-transcribe/issues
-- **Pull requests:** target `maxonamission/voxtral-transcribe`, not
-  this repo. The plugin source lives under `obsidian-plugin/` there;
-  shared logic (transcript parsing, voice commands) lives under
-  `shared/`.
+## Docs
 
-PRs opened against this repo will be redirected — files here are
-overwritten on every sync from `voxtral-transcribe`, so changes made
-directly will be lost.
+- `docs/drift/` records decisions, one file each.
+- `docs/state/<branch>.md` holds each branch's state, and it stays in
+  place after the PR merges.
 
-## Building from source
+## License
 
-In the source repo:
-
-```bash
-git clone https://github.com/maxonamission/voxtral-transcribe.git
-cd voxtral-transcribe
-npm ci                     # from the repository root (npm workspaces)
-cd obsidian-plugin
-npm run build
-```
-
-This produces `main.js`. Copy `main.js`, `manifest.json`, and
-`styles.css` into `<vault>/.obsidian/plugins/voxtral-transcribe/` and
-enable the plugin in Settings → Community plugins.
-
-## Tests & lint
-
-From `obsidian-plugin/`:
-
-```bash
-npm test                              # vitest
-npm run lint                          # eslint (the warning budget is enforced in CI, see .github/workflows/plugin-ci.yml)
-npx tsc -noEmit -skipLibCheck
-```
-
-See `CONTRIBUTING.md` in the source repo for the full development
-guide, including the Python backend and release process.
+GPL-3.0. Keep `LICENSE` and the original author's copyright notice.
