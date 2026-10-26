@@ -1,4 +1,11 @@
-# Voxtral Transcribe
+# Voxtral Transcribe (DY)
+
+> **An independent fork.** This is David Yee's own copy of
+> [Voxtral Transcribe](https://github.com/maxonamission/obsidian-voxtral) by Max Kloosterman,
+> forked at v1.19.0 and no longer tracking upstream. It installs under its own plugin id,
+> `voxtral-transcribe-dy`, so it can't collide with the community plugin. The rest of
+> this README is the upstream user guide, kept for reference. Links into
+> `maxonamission/*` point at the original project.
 
 **Your notes, done when you stop talking.**
 
@@ -14,7 +21,7 @@ We built this for people who think out loud: researchers, consultants, anyone wh
 2. Click the microphone ribbon icon (desktop) or tap it (mobile), or assign your own hotkey to "Voxtral: Start/stop recording" under Settings → Hotkeys
 3. Start talking, and say *"heading 2"*, *"new bullet"* or *"no, not X but Y"* as you go
 
-**Install it, dictate one note, and see whether you still want to edit afterwards.** Like it? [☕ Buy Me a Coffee](https://buymeacoffee.com/maxonamission)
+**Install it, dictate one note, and see whether you still want to edit afterwards.** Like it? Support the original author: [☕ Buy Me a Coffee](https://buymeacoffee.com/maxonamission)
 
 ## Why Voxtral Transcribe?
 
@@ -61,9 +68,13 @@ We built this for people who think out loud: researchers, consultants, anyone wh
 
 You need **Obsidian v1.11.4 or newer** and a **Mistral API key** (free to create at [console.mistral.ai](https://console.mistral.ai/)).
 
-**From Community Plugins (recommended):** Settings → Community plugins → Browse → search "Voxtral Transcribe" → Install, Enable, then enter your API key under Settings → Voxtral Transcribe.
+This fork is not in the Community Plugins browser.
 
-**Manual:** download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/maxonamission/obsidian-voxtral/releases/latest) into `.obsidian/plugins/voxtral-transcribe/` in your vault, restart Obsidian, and enable the plugin under Settings → Community plugins.
+**With BRAT:** add `tangentialism/obsidian-voxtral` as a beta plugin.
+
+**Manual:** download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/tangentialism/obsidian-voxtral/releases/latest) into `.obsidian/plugins/voxtral-transcribe-dy/` in your vault, restart Obsidian, and enable the plugin under Settings → Community plugins.
+
+Switching from the community plugin? Disable it first. Because the id is new, plugin settings (`data.json`) don't carry over; copy `data.json` from `.obsidian/plugins/voxtral-transcribe/` if you want them.
 
 ## Usage
 
@@ -406,7 +417,7 @@ What the plugin accesses and why. The Obsidian review page lists some of these w
 
 ## Works well with
 
-**[Parallax](https://github.com/maxonamission/obsidian-parallax)** — from the same workshop. A
+**[Parallax](https://github.com/maxonamission/obsidian-parallax)** — by the original author. A
 transcript is raw thinking; Parallax turns it into structured research. Speak a messy problem
 statement or a research question, dictate it into your note, then select the transcript
 and run Parallax's **Explore the problem**: assumptions and counter-assumptions, reformulations,
@@ -440,13 +451,8 @@ them out of the box, and a light edit pass makes them ideal:
 
 ## Development
 
-```bash
-npm ci          # from the repository root (npm workspaces)
-cd obsidian-plugin
-npm run dev     # watch mode
-npm run build   # production build
-```
+So far this repo holds only the built plugin (`main.js`, `manifest.json`, `styles.css`) and no source. Rebuilding a TypeScript source tree is planned. Until then, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-[GPL-3.0](LICENSE) — Copyright (c) 2026 Max Kloosterman
+[GPL-3.0](LICENSE) — Copyright (c) 2026 Max Kloosterman (original work); modifications Copyright (c) 2026 David Yee
